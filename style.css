@@ -24,6 +24,7 @@ img {
   --body-color: hsl(0 0% 98%);
 
   --title-font-size: 1.875rem;
+  --subtitle-font-size: 1.12rem;
 }
 /* ======= BASE =============================== */
 html {
@@ -102,6 +103,9 @@ footer {
 section .title {
   margin-bottom: 1rem;
 }
+section .subtitle {
+  font-size: var(--subtitle-font-size);
+}
 section header {
   margin-bottom: 4rem;
 }
@@ -127,12 +131,14 @@ nav {
 
 nav ul li {
   text-align: center;
+  list-style: none;
 }
 nav ul li a {
   transition: 0.2s;
   position: relative;
 }
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
   color: var(--base-color);
 }
 nav ul li a::after {
@@ -145,7 +151,8 @@ nav ul li a::after {
   bottom: 0;
   transition: 0.2s;
 }
-nav ul li a:hover::after {
+nav ul li a:hover::after,
+nav ul li a.active::after {
   width: 100%;
 }
 nav .menu {
@@ -387,6 +394,86 @@ footer .social a:hover {
 }
 
 /* Responsividade */
-
-@media (min-width: 992px) {
+@media (min-width: 700px) {
+  .container {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  section header,
+  #testimonials header {
+    max-width: 32rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .button {
+    height: 3.125rem;
+  }
+  nav .menu {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+  #header a.logo {
+    padding-left: 1rem;
+  }
+  nav .menu ul {
+    display: flex;
+    gap: 2rem;
+    padding-right: 1rem;
+  }
+  nav .menu ul li a.title {
+    font: 400 1rem "Poppins", sans-serif;
+  }
+  nav .icon-menu {
+    display: none;
+  }
+  #home .container {
+    grid-auto-flow: column;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+  #home .text {
+    order: -1;
+    max-width: 24rem;
+    text-align: left;
+  }
+  #about .container {
+    grid-auto-flow: column;
+    margin: 0 auto;
+  }
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .card {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  #testimonials .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #contact .container {
+    grid-auto-flow: column;
+    align-items: center;
+  }
+  #contact .text {
+    max-width: 25rem;
+    padding-left: 1rem;
+  }
+  footer.section {
+    padding: 3.75rem 0;
+  }
+  footer .container {
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  footer .logo {
+    font-size: 2.25rem;
+  }
+  footer .brand {
+    padding-left: 1rem;
+  }
 }

@@ -38,6 +38,12 @@ const swiper = new Swiper(".swiper", {
     delay: 5000,
     disableOnInteraction: false,
   },
+  breakpoints: {
+    767: {
+      slidesPerView: 2,
+      setWrapperSize: true,
+    },
+  },
 });
 
 const scrollReveal = ScrollReveal({
@@ -65,5 +71,32 @@ window.addEventListener("scroll", () => {
     backToTopButton.classList.add("show");
   } else {
     backToTopButton.classList.remove("show");
+  }
+});
+
+const sections = document.querySelectorAll("section[id]");
+window.addEventListener("scroll", () => {
+  const checkpoint = window.pageYOffset + (window.innerHeight / 8) * 4;
+
+  for (const section of sections) {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    let sectionId = section.getAttribute("id");
+    if (sectionId == "home") {
+      sectionId = "high";
+    }
+
+    const checkpointStart = checkpoint >= sectionTop;
+    const checkpointEnd = checkpoint <= sectionTop + sectionHeight;
+
+    if (checkpointStart && checkpointEnd) {
+      document
+        .querySelector("nav ul li a[href*=" + sectionId + "]")
+        .classList.add("active");
+    } else {
+      document
+        .querySelector("nav ul li a[href*=" + sectionId + "]")
+        .classList.remove("active");
+    }
   }
 });
